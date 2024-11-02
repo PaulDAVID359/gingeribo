@@ -1,2 +1,11 @@
-{"stock":[
-  {"
+{
+  "stock":{
+    "ginchoco":{"image":"gingembre-chocolate.png", "nom":"Gingembre chocolaté", "prix":1, "nombre":295},
+    "gingerbrar":{"image":"gingerbrar.png", "nom":"Gingerbrar", "prix":1, "nombre":295},
+    "ginconfit":{"image":"gingembre-chocolate.png", "nom":"Gingembre confit", "prix":3, "nombre":200},
+    "ginorge":{"image":"gingembre-chocolate.png", "nom":"Ginger d'orge", "prix":2, "nombre":200},
+    "baguesucre":{"image":"gingembre-chocolate.png", "nom":"Bague au sucre", "prix":7, "nombre":49},
+    "gingeredition":{"image":"gingembre-chocolate.png", "nom":"Bonbons Ginger Edition", "prix":10, "nombre":50},
+    "ginsucre":{"image":"gingembre-chocolate.png", "nom":"Gingembres sucrés", "prix":3, "nombre":100}
+  }
+}
