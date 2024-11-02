@@ -35,8 +35,9 @@
             }
             @media (orientation:landscape) {
                 #body {
-                    width:min(50%, 350px);
-                    margin:0 25%;
+                    width:50%;
+                    max-width:700px;
+                    margin:0 calc((100% - 700px) / 2);
                 }
             }
 
@@ -53,7 +54,7 @@
                     <tr>
                         <th></th>
                         <th>Nom</th>
-                        <th style="width:max(350px, calc(100% - 350px))">Prix</th>
+                        <th style="width:calc(100% - 350px); max-width:350px;">Prix</th>
                         <th>Stock</th>
                         <th></th>
                         <th></th>
