@@ -78,16 +78,16 @@
             });
         function augmenter (nom) {
             const item = stock[nom];
-            if (commande[i]<item.nombre) {
-                commande[i]++;
+            if (commande[nom]<item.nombre) {
+                commande[nom]++;
                 document.getElementById(nom+"-quantite").innerHTML=commande[i];
                 document.getElementById(nom+"-tot").innerHTML=commande[i]*item.prix;
             }
         }
         function diminuer (nom) {
             const item = stock[nom];
-            if (commande[i]>0) {
-                commande[i]-=1;
+            if (commande[nom]>0) {
+                commande[nom]-=1;
                 document.getElementById(nom+"-quantite").innerHTML=commande[i];
                 document.getElementById(nom+"-tot").innerHTML=commande[i]*item.prix;
             }
