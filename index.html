@@ -21,14 +21,18 @@
             }
             #body {
                  width:100%;
+                 text-align:center;
             }
             footer {
                 text-align:center;
             }
             table {
-                width:fit-content;
+                width:100%;
             }
-
+            th {
+                width:50px;
+                height:50px;
+            }
             @media (orientation:landscape) {
                 #body {
                     width:50%;
@@ -49,7 +53,7 @@
                     <tr>
                         <th></th>
                         <th>Nom</th>
-                        <th>Prix</th>
+                        <th style="width:calc(100% - 350px)">Prix</th>
                         <th>Stock</th>
                         <th></th>
                         <th></th>
