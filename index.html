@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Gingeribo</title>
+        <style>
+            body {
+                background-color:#FBDEB4;
+                font-family:Marker Felt, fantasy;
+            }
+            h1 {
+                font-family: Trattatello, fantasy;
+            }
+            .button {
+                background-color:#EA1953;
+                border:none;
+                transition-duration: 0.5s;
+            }
+            .button:hover {
+                background-color:#790721;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <img src="/logo.png">
+        </div>
+        <div id="body">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Stock</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-commande">
+                </tbody>
+            </table>
+        </div>
+    </body>
+    <script>
+        var stock = {};
+        var commande = {};
+        fetch("/data.json").then(response => {return response.json()})
+            .then(data => {
+                const tbody = document.getElementById("tbody-commande");
+                stock = data.stock;
+                for (key in stock) {
+                    const e = document.createElement("tr");
+                    e.innerHTML='<tr><img src="'+stock[key].image+'"></tr><tr>'+stock[key].nom+'</tr><tr>'+stock[key].prix+'</tr><tr>'+stock[key].nombre+'</tr><tr class="moins-tr" onclick="diminuer(\''+key+'\')">-</tr><tr id="'+key+'-quantite">0</tr><tr class="plus-tr" onclick="diminuer(\''+key+'\')">-</tr><tr id="'+key+'-tot">    </tr>';
+                    tbody.appendChild(e);
+                    commande[key]=0;
+                }
+            });
+        function augmenter (nom) {
+            const item = stock[nom];
+            if (commande[i]<item.nombre) {
+                commande[i]++;
+                document.getElementById(nom+"-quantite").innerHTML=commande[i];
+                document.getElementById(nom+"-tot").innerHTML=commande[i]*item.prix;
+            }
+        }
+        function diminuer (nom) {
+            const item = stock[nom];
+            if (commande[i]>0) {
+                commande[i]-=1;
+                document.getElementById(nom+"-quantite").innerHTML=commande[i];
+                document.getElementById(nom+"-tot").innerHTML=commande[i]*item.prix;
+            }
+        }
+    </script>
+<html>
