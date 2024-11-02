@@ -62,7 +62,7 @@
                 stock = data.stock;
                 for (key in stock) {
                     const e = document.createElement("tr");
-                    e.innerHTML='<tr><img src="'+stock[key].image+'"></tr><tr>'+stock[key].nom+'</tr><tr>'+stock[key].prix+'</tr><tr>'+stock[key].nombre+'</tr><tr class="moins-tr" onclick="diminuer(\''+key+'\')">-</tr><tr id="'+key+'-quantite">0</tr><tr class="plus-tr" onclick="diminuer(\''+key+'\')">-</tr><tr id="'+key+'-tot">    </tr>';
+                    e.innerHTML='<td><img src="'+stock[key].image+'"></td><td>'+stock[key].nom+'</tr><tr>'+stock[key].prix+'</td><td>'+stock[key].nombre+'</td><td class="moins-tr" onclick="diminuer(\''+key+'\')">-</td><td id="'+key+'-quantite">0</td><td class="plus-tr" onclick="diminuer(\''+key+'\')">-</td><td id="'+key+'-tot">    </tr>';
                     tbody.appendChild(e);
                     commande[key]=0;
                 }
