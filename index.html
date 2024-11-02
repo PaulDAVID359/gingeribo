@@ -80,16 +80,16 @@
             const item = stock[nom];
             if (commande[nom]<item.nombre) {
                 commande[nom]++;
-                document.getElementById(nom+"-quantite").innerHTML=commande[i];
-                document.getElementById(nom+"-tot").innerHTML=commande[i]*item.prix;
+                document.getElementById(nom+"-quantite").innerHTML=commande[nom];
+                document.getElementById(nom+"-tot").innerHTML=commande[nom]*item.prix;
             }
         }
         function diminuer (nom) {
             const item = stock[nom];
             if (commande[nom]>0) {
                 commande[nom]-=1;
-                document.getElementById(nom+"-quantite").innerHTML=commande[i];
-                document.getElementById(nom+"-tot").innerHTML=commande[i]*item.prix;
+                document.getElementById(nom+"-quantite").innerHTML=commande[nom];
+                document.getElementById(nom+"-tot").innerHTML=commande[nom]*item.prix;
             }
         }
     </script>
