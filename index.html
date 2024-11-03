@@ -13,6 +13,7 @@
             }
             .button {
                 background-color:#EA1953;
+                color:#fff;
                 border:none;
                 transition-duration: 0.5s;
             }
@@ -39,10 +40,15 @@
                 height:50px;
             }
 
-            .moins-tr, .plus-tr, .quantite-tr {
+            .moins-tr, .plus-tr {
                 text-align:center;
             }
 
+            .quantite-tr {
+                text-align:center;
+                background-color:#EA1953;
+                color:#fff;
+            }
             
             @media all and (max-width:700px) {
                 #body {
@@ -95,7 +101,7 @@
                 stock = data.stock;
                 for (key in stock) {
                     const e = document.createElement("tr");
-                    e.innerHTML='<td><img style="width:50px;height:50px;" src="'+stock[key].image+'"></td><td>'+stock[key].nom+'</tr><tr>'+stock[key].prix+'</td><td>'+stock[key].nombre+'</td><td class="moins-tr" onclick="diminuer(\''+key+'\')">-</td><td class="quantite-tr" id="'+key+'-quantite">0</td><td class="plus-tr" onclick="augmenter(\''+key+'\')">+</td><td id="'+key+'-tot">    </tr>';
+                    e.innerHTML='<td><img style="width:50px;height:50px;" src="'+stock[key].image+'"></td><td>'+stock[key].nom+'</tr><tr>'+stock[key].prix+'</td><td>'+stock[key].nombre+'</td><td class="moins-tr button" onclick="diminuer(\''+key+'\')">-</td><td class="quantite-tr" id="'+key+'-quantite">0</td><td class="plus-tr button" onclick="augmenter(\''+key+'\')">+</td><td id="'+key+'-tot">    </tr>';
                     tbody.appendChild(e);
                     commande[key]=0;
                 }
