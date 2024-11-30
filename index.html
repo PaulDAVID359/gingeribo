@@ -33,7 +33,8 @@
                 table-layout:fixed;
                 width:100%;
                 max-width:700px;
-                border-collapse:collapse;
+                border-collapse: separate;
+                border-spacing: 10px 0px;
                 border:none;
             }
             th, td {
@@ -81,6 +82,11 @@
         <div id="header" style="text-align:center">
             <img src="/gingeribo.png">
         </div>
+        <div id="command-menu" class="popup">
+            <h1 style="text-align:center">Ma commande</h1>
+            <div id="ordering-items-list"></div>
+            <div id="command-menu-buttons"><button class="button" onclick="document.getElementById('command-menu').style.display='none';">Continuer mes achats</button></div>
+        </div>
         <div id="body">
             <table border="0">
                 <thead>
@@ -99,6 +105,7 @@
                 </tbody>
             </table>
         </div>
+        
     </body>
     <footer>
         <p>&copy; Gingeribo 2024</p>
