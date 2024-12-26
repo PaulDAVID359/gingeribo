@@ -16,7 +16,7 @@
                 color:#fff;
                 border:none;
                 padding:2px;
-                border-radius:50%;
+                border-radius:10px;
                 transition-duration: 0.5s;
             }
             .button:hover {
@@ -129,11 +129,12 @@
                 stock = data.stock;
                 for (key in stock) {
                     const e = document.createElement("tr");
-                    e.innerHTML='<td><img style="width:50px;height:50px;" src="'+stock[key].image+'"></td><td>'+stock[key].nom+'</td><td style="text-align:center">'+stock[key].prix+'</td><td style="text-align:center">'+stock[key].nombre+'</td><td class="moins-tr button" onclick="diminuer(\''+key+'\')">-</td><td class="quantite-tr" id="'+key+'-quantite">0</td><td class="plus-tr button" onclick="augmenter(\''+key+'\')">+</td><td id="'+key+'-tot">    </tr>';
+                    e.innerHTML='<td><img style="width:50px;height:50px;" src="'+stock[key].image+'"></td><td>'+stock[key].nom+'</td><td style="text-align:center">'+stock[key].prix+'</td><td style="text-align:center">'+stock[key].nombre+'</td><td class="moins-tr button" onclick="diminuer(\''+key+'\')">-</td><td class="quantite-tr" id="'+key+'-quantite">0</td><td class="plus-tr button" onclick="augmenter(\''+key+'\')">+</td><td id="'+key+'-tot" style="text-align:center">    </tr>';
                     tbody.appendChild(e);
                     commande[key]=0;
                     const c = document.createElement("tr");
                     c.id="commander-"+key;
+                    c.style.display="hidden";
                     orderedItems.appendChild(c);
                 }
             });
@@ -143,6 +144,7 @@
                 commande[nom]++;
                 document.getElementById(nom+"-quantite").innerHTML=commande[nom];
                 document.getElementById(nom+"-tot").innerHTML=commande[nom]*item.prix;
+                document.getElementById("commander-"+nom).style.display="block";
                 document.getElementById("commander-"+nom).innerHTML="<td>"+item.nom+"</td><td>"+commande[nom]+"</td><td>"+item.prix+"</td><td>"+commande[nom]*item.prix+"</td>";
             }
         }
@@ -152,6 +154,13 @@
                 commande[nom]-=1;
                 document.getElementById(nom+"-quantite").innerHTML=commande[nom];
                 document.getElementById(nom+"-tot").innerHTML=commande[nom]*item.prix;
+                document.getElementById(nom+"-quantite").innerHTML=commande[nom];
+                document.getElementById(nom+"-tot").innerHTML=commande[nom]*item.prix;
+                document.getElementById("commander-"+nom).innerHTML="<td>"+item.nom+"</td><td>"+commande[nom]+"</td><td>"+item.prix+"</td><td>"+commande[nom]*item.prix+"</td>";
+                if (commande[nom]===0) {
+                    document.getElementById("commander-"+nom).style.display="hidden";
+                    document.getElementById(nom+"-tot").innerHTML="";
+                }
             }
         }
         
