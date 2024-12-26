@@ -34,7 +34,7 @@
                 width:100%;
                 max-width:700px;
                 border-collapse: separate;
-                border-spacing: 10px 0px;
+                border-spacing: 0px 1px;
                 border:none;
             }
             th, td {
@@ -82,7 +82,7 @@
         <div id="header" style="text-align:center">
             <img src="/gingeribo.png">
         </div>
-        <div id="command-menu" class="popup">
+        <div id="command-menu" class="popup" hidden>
             <h1 style="text-align:center">Ma commande</h1>
             <div id="ordering-items-list"></div>
             <div id="command-menu-buttons"><button class="button" onclick="document.getElementById('command-menu').style.display='none';">Continuer mes achats</button></div>
@@ -105,7 +105,7 @@
                 </tbody>
             </table>
         </div>
-        
+        <div style="text-align:center"><button class="button" onclick="document.getElementById('command-menu').style.display='block';">Commander</button></div>
     </body>
     <footer>
         <p>&copy; Gingeribo 2024</p>
@@ -143,5 +143,6 @@
                 document.getElementById(nom+"-tot").innerHTML=commande[nom]*item.prix;
             }
         }
+        
     </script>
 <html>
