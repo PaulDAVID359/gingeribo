@@ -15,6 +15,8 @@
                 background-color:#EA1953;
                 color:#fff;
                 border:none;
+                padding:2px;
+                border-radius:50%;
                 transition-duration: 0.5s;
             }
             .button:hover {
@@ -84,7 +86,11 @@
         </div>
         <div id="command-menu" class="popup" hidden>
             <h1 style="text-align:center">Ma commande</h1>
-            <div id="ordering-items-list"></div>
+            <div id="ordering-items-list">
+                <table id="ordered-items">
+                    <thead><th>Nom</th><th>Quantité</th><th>Prix</th><th>Total</th></thead>
+                </table>
+            </div>
             <div id="command-menu-buttons"><button class="button" onclick="document.getElementById('command-menu').style.display='none';">Continuer mes achats</button></div>
         </div>
         <div id="body">
@@ -119,12 +125,16 @@
         fetch("/data.json").then(response => {return response.json()})
             .then(data => {
                 const tbody = document.getElementById("tbody-commande");
+                const orderedItems = document.getElementById("ordered-items");
                 stock = data.stock;
                 for (key in stock) {
                     const e = document.createElement("tr");
                     e.innerHTML='<td><img style="width:50px;height:50px;" src="'+stock[key].image+'"></td><td>'+stock[key].nom+'</td><td style="text-align:center">'+stock[key].prix+'</td><td style="text-align:center">'+stock[key].nombre+'</td><td class="moins-tr button" onclick="diminuer(\''+key+'\')">-</td><td class="quantite-tr" id="'+key+'-quantite">0</td><td class="plus-tr button" onclick="augmenter(\''+key+'\')">+</td><td id="'+key+'-tot">    </tr>';
                     tbody.appendChild(e);
                     commande[key]=0;
+                    const c = document.createElement("tr");
+                    c.id="commander-"+key;
+                    orderedItems.appendChild(c);
                 }
             });
         function augmenter (nom) {
@@ -133,6 +143,7 @@
                 commande[nom]++;
                 document.getElementById(nom+"-quantite").innerHTML=commande[nom];
                 document.getElementById(nom+"-tot").innerHTML=commande[nom]*item.prix;
+                document.getElementById("commander-"+nom).innerHTML="<td>"+item.nom+"</td><td>"+commande[nom]+"</td><td>"+item.prix+"</td><td>"+commande[nom]*item.prix+"</td>";
             }
         }
         function diminuer (nom) {
